@@ -1,6 +1,4 @@
-# Standard Application Model for Vala
-
-The template Application Vala for elementary OS.
+# Standard Application Model Vala for elementary OS
 
 ## Building, Testing, and Installation
 
