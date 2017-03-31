@@ -1,2 +1,2 @@
 # vala-app
-Design Pattern - Application Vala
+Standard Application Model for Vala
