@@ -13,34 +13,15 @@
 * You should have received a copy of the GNU General Public License along
 * with this program. If not, see http://www.gnu.org/licenses/.
 */
-using Gtk;
 
-namespace Hello.View {
+namespace Hello.Build {
 
-	public class MainWindow : Gtk.Window {
+	public const string DATADIR = "@DATADIR@";
+	public const string PKGDATADIR = "@PKGDATADIR@";
+	public const string GETTEXT_PACKAGE = "@GETTEXT_PACKAGE@";
+	public const string RELEASE_NAME = "@RELEASE_NAME@";
+	public const string VERSION = "@VERSION@";
+	public const string VERSION_INFO = "@VERSION_INFO@";
+	public const string INSTALL_PREFIX = "@PREFIX@";
 
-		private Gtk.HeaderBar headerbar;
-
-		public MainWindow () {
-			
-			header_bar ();
-
-			this.window_position = Gtk.WindowPosition.CENTER;
-			this.set_default_size (500, 500);
-			this.set_titlebar (headerbar);
-			this.border_width = 2;
-	    	this.show_all ();
-
-		}
-
-		private void header_bar () {
-
-			headerbar = new HeaderBar ();
-			headerbar.set_title ("Hello");
-			headerbar.set_subtitle ("elementary OS");
-			headerbar.set_show_close_button (true);
-		
-		}
-
-	}
 }

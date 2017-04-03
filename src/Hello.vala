@@ -19,47 +19,63 @@ using Granite;
 
 namespace Hello {
 
-	HelloView.MainWindow window = null;
-
     public class Hello : Granite.Application{
 
+    	public static View.MainWindow main_window { get; private set; default = null; }
+
 		construct {
-			program_name = "hello-again";
-			exec_name = "hello-again";
+			program_name = Constants.APP_NAME;
+            exec_name = Constants.EXEC_NAME;
 
-			app_years = "2017";
-			app_icon = "hello";
-			app_launcher = "hello.desktop";
-			application_id = "net.launchpad.hello-again";
+			app_years = Constants.APP_YEARS;
+			app_icon = Constants.APP_ICON;
+			app_launcher = Constants.APP_LAUNCHER;
+			application_id = Constants.APP_ID;
 
-			main_url = "http://playtube.net";
-			bug_url = "https://bugs.launchpad.net/hello-again";
-			help_url = "http://hello-again.net/documentation";
-			translate_url = "https://translations.launchpad.net/hello-again";
+			main_url = Constants.MAIN_URL;
+			bug_url = Constants.BUG_URL;
+			help_url = Constants.HELP_URL;
+			translate_url = Constants.TRANSLATE_URL;
 
-			about_authors = { "Your Name <you@emailaddress.com>" };
-			about_documenters = { "Your Name <you@emailaddress.com>" };
-			about_artists = { "Your Name <you@emailaddress.com>" };
-			about_comments = "Proves that we can use Vala and Gtk";
-			about_license_type = Gtk.License.GPL_3_0;
+			about_authors = Constants.ABOUT_AUTHORS;
+			about_documenters = Constants.ABOUT_DOCUMENTERS;
+			about_artists = Constants.ABOUT_ARTISTS;
+			about_comments = Constants.ABOUT_COMMENTS;
+			about_license_type = Gtk.License.MIT_X11;
 
-			SimpleAction quit_action = new SimpleAction ("quit", null);
+			build_data_dir = Build.DATADIR;
+            build_pkg_data_dir = Build.PKGDATADIR;
+            build_release_name = Build.RELEASE_NAME;
+            build_version = Build.VERSION;
+            build_version_info = Build.VERSION_INFO;
+
+			var quit_action = new SimpleAction ("quit", null);
             quit_action.activate.connect (() => {
-                if (window != null) {
-                    window.destroy ();
+                if (main_window != null) {
+                    main_window.destroy ();
                 }
             });
             add_action (quit_action);
+            add_accelerator ("<Control>q", "app.quit", null);
         }
 
-        public override void activate () {
-            window = new HelloView.MainWindow ();
-            this.add_window (window);
+       	public override void activate () {
+       		if (main_window == null) {
+	            main_window = new View.MainWindow ();
+
+	            main_window.destroy.connect (() => {
+	                main_window = null;
+	            });
+
+	            add_window (main_window);
+	            main_window.show_all ();
+        	}
         }
     }
 
-    public static int main (string [] args) {
-    	var application = new Hello ();
-    	return application.run (args);
+    public static void main (string [] args) {
+    	Gtk.init (ref args);
+	    var application = new Hello ();
+	    application.run(args);
     }
 }

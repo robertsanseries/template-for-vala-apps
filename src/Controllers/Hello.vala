@@ -13,34 +13,13 @@
 * You should have received a copy of the GNU General Public License along
 * with this program. If not, see http://www.gnu.org/licenses/.
 */
-using Gtk;
 
-namespace Hello.View {
+namespace Hello.Controllers {
 
-	public class MainWindow : Gtk.Window {
+	public class Hello {
 
-		private Gtk.HeaderBar headerbar;
-
-		public MainWindow () {
-			
-			header_bar ();
-
-			this.window_position = Gtk.WindowPosition.CENTER;
-			this.set_default_size (500, 500);
-			this.set_titlebar (headerbar);
-			this.border_width = 2;
-	    	this.show_all ();
-
+		public Hello () {
 		}
-
-		private void header_bar () {
-
-			headerbar = new HeaderBar ();
-			headerbar.set_title ("Hello");
-			headerbar.set_subtitle ("elementary OS");
-			headerbar.set_show_close_button (true);
-		
-		}
-
 	}
+
 }
