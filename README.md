@@ -1,25 +1,63 @@
-# Standard Application Model Vala for elementary OS
+<div align="center">
+  <span align="center"> <img width="80" height="95" class="center" src="https://github.com/robertsanseries/template-for-vala-apps/blob/master/data/images/com.github.robertsanseries.template-for-vala-apps.png" alt="Icon"></span>
+  <h1 align="center">App Template</h1>
+  <h3 align="center">My application template Vala for elementary OS.</h3>
+</div>
 
-## Building, Testing, and Installation
+<br/>
 
-You'll need the following dependencies:
-* cmake
-* [cmake-elementary](https://code.launchpad.net/~elementary-os/+junk/cmake-modules)
-* libgranite-dev
-* libgtk-3-dev
-* valac (>= 0.26)
+<p align="center">
+   <a href="https://github.com/robertsanseries/template-for-vala-apps/blob/master/LICENSE">
+    <img src="https://img.shields.io/badge/License-GPL--3.0-blue.svg">
+   </a>
+</p>
 
-It's recommended to create a clean build environment
+<p align="center">
+    <img width="700" height="500" src="https://github.com/robertsanseries/template-for-vala-apps/blob/master/data/images/screenshot.png" alt="Screenshot"> <br>
+  <a href="https://github.com/robertsanseries/template-for-vala-apps/issues/new"> Report a problem! </a>
+</p>
 
-    mkdir build
-    cd build/
-    
-Run `cmake` to configure the build environment and then `make` to build
+## Installation
 
-    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-    make
-    
-To install, use `make install`, then execute
+s### Dependencies
+These dependencies must be present before building
+ - `meson (>=0.40)`
+ - `valac (>=0.16)`
+ - `debhelper (>= 9)`
+ - `libgranite-dev`
+ - `libgtk-3-dev`
 
-    sudo make install
-    ./Hello
+ 
+ ### Building
+
+```
+git clone https://github.com/robertsanseries/template-for-vala-apps.git && cd template-for-vala-apps
+meson build && cd build
+meson configure -Dprefix=/usr
+ninja
+sudo ninja install
+com.github.robertsanseries.template-for-vala-apps
+```
+
+### Deconstruct
+
+```
+sudo ninja uninstall
+```
+
+### Contributing
+
+To help, access the links below:
+
+- [Guide on Code Style](https://github.com/robertsanseries/ciano/wiki/Guide-on-code-style)
+
+- [Proposing Design Changes](https://github.com/robertsanseries/ciano/wiki/Proposing-Design-Changes)
+
+- [Reporting Bugs](https://github.com/robertsanseries/ciano/wiki/Reporting-Bugs)
+
+- [Translate](https://github.com/robertsanseries/ciano/wiki/Translate)
+
+
+### License
+
+This project is licensed under the GPL3 License - see the [LICENSE](LICENSE.md) file for details.
