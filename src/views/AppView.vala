@@ -15,6 +15,7 @@
 */
 
 using App.Widgets;
+using App.Configs;
 
 namespace App.Views {
 
@@ -40,6 +41,13 @@ namespace App.Views {
 			
             this.headerbar = new HeaderBar ();
 			this.app.set_titlebar (this.headerbar);
+
+            var welcome = new Granite.Widgets.Welcome (
+              Properties.WELCOME,
+              Properties.THIS_APP_JUST_TEMPLATE
+            );
+
+            this.add (welcome);
 		}
 	}
 }

@@ -29,5 +29,7 @@ namespace App.Configs {
         
         public abstract const string TITLE_HEADER_BAR = "App Template";
         public abstract const string CLOSE = "Close";
+        public abstract const string WELCOME = "Welcome";
+        public abstract const string THIS_APP_JUST_TEMPLATE = "This app is just a template";
     }
 }

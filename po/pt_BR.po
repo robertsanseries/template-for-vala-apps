@@ -1,0 +1,28 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-09-14 22:30-0000\n"
+"PO-Revision-Date: 2017-09-14 22:30-0000\n"
+"Last-Translator:  Robert San <robertsanseries@gmail.com>\n"
+"Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/configs/Properties.vala:30
+msgid "App Template"
+msgstr "Modelo de aplicativo"
+
+#: src/configs/Properties.vala:31
+msgid "Close"
+msgstr "Fechar"
+
+#: src/configs/Properties.vala:32
+msgid "Welcome"
+msgstr "Bem-vindo"
+
+#: src/configs/Properties.vala:33
+msgid "This app is just a template"
+msgstr "Este aplicativo é apenas um modelo"
