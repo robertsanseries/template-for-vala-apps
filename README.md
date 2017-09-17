@@ -1,5 +1,5 @@
 <div align="center">
-  <span align="center"> <img width="80" height="95" class="center" src="https://github.com/robertsanseries/template-for-vala-apps/blob/master/data/images/com.github.robertsanseries.template-for-vala-apps.png" alt="Icon"></span>
+  <span align="center"> <img width="80" height="70" class="center" src="https://github.com/robertsanseries/template-for-vala-apps/blob/master/data/images/com.github.robertsanseries.template-for-vala-apps.png" alt="Icon"></span>
   <h1 align="center">App Template</h1>
   <h3 align="center">My application template Vala for elementary OS.</h3>
 </div>
@@ -19,7 +19,7 @@
 
 ## Installation
 
-s### Dependencies
+### Dependencies
 These dependencies must be present before building
  - `meson (>=0.40)`
  - `valac (>=0.16)`
