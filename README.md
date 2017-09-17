@@ -10,6 +10,12 @@
    <a href="https://github.com/robertsanseries/template-for-vala-apps/blob/master/LICENSE">
     <img src="https://img.shields.io/badge/License-GPL--3.0-blue.svg">
    </a>
+  <a href="https://github.com/robertsanseries/template-for-vala-apps/releases">
+    <img src="https://img.shields.io/badge/Release-v%200.1.0-orange.svg">
+   </a>
+  <a href="https://github.com/robertsanseries/template-for-vala-apps/releases/download/0.1.0/com.github.robertsanseries.template-for-vala-apps_0.1.0_amd64.deb">
+     <img src="https://img.shields.io/badge/Download-%20Package .deb-yellow.svg">
+    </a>
 </p>
 
 <p align="center">
