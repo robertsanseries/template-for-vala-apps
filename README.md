@@ -19,7 +19,7 @@
 </p>
 
 <p align="center">
-    <img width="700" height="500" src="https://github.com/robertsanseries/template-for-vala-apps/blob/master/data/images/screenshot.png" alt="Screenshot"> <br>
+    <img  src="https://github.com/robertsanseries/template-for-vala-apps/blob/master/data/images/screenshot.png" alt="Screenshot"> <br>
   <a href="https://github.com/robertsanseries/template-for-vala-apps/issues/new"> Report a problem! </a>
 </p>
 
