@@ -21,14 +21,14 @@ namespace App.Models {
      *
      * @since 0.1.0
      */
-	public class AppModel {
+    public class AppModel {
 
         /**
          * Constructs a new {@code AppModel} object.
          */
-		public AppModel () {
+        public AppModel () {
 
-		}
-	}
+        }
+    }
 
 }

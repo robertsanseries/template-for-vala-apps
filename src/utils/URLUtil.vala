@@ -19,34 +19,34 @@
 
 namespace App.Utils {
 
-	/**
+    /**
      * The {@code URLUtil} class is responsible for manipulating urls.
      *
      * @since 0.1.0
      */
     public class URLUtil {
 
-    	/**
-	     * Check if url is valid.
-	     *
-	     * Exemple:
-	     * > URLUtil.check_url_with_regex("https://elementary.io");
-	     * 
-	     * @param {@code string} url 
-	     */
-		public static bool check_url_with_regex (string url) {
-			try {
-	            var regex = new Regex ("""(http|ftp|https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?""");
-	            
-	            if (!regex.match (url)) {
-		            return false;
-		        }
+        /**
+         * Check if url is valid.
+         *
+         * Exemple:
+         * > URLUtil.check_url_with_regex("https://elementary.io");
+         * 
+         * @param {@code string} url 
+         */
+        public static bool check_url_with_regex (string url) {
+            try {
+                var regex = new Regex ("""(http|ftp|https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?""");
+                
+                if (!regex.match (url)) {
+                    return false;
+                }
 
-	        } catch (RegexError e) {
-	            GLib.message("Erro: %s", e.message);
-	        }
+            } catch (RegexError e) {
+                GLib.message("Erro: %s", e.message);
+            }
 
-	        return true;
-	    }
-	}
+            return true;
+        }
+    }
 }

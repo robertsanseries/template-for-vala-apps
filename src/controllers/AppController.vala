@@ -24,7 +24,7 @@ namespace App.Controllers {
      *
      * @since 0.1.0
      */
-	public class AppController {
+    public class AppController {
 
         private Gtk.Application     application;
         private AppView             app_view;
@@ -33,12 +33,12 @@ namespace App.Controllers {
         /**
          * Constructs a new {@code AppController} object.
          */
-		public AppController (Gtk.ApplicationWindow window, Gtk.Application application,  AppView app_view) {
+        public AppController (Gtk.ApplicationWindow window, Gtk.Application application,  AppView app_view) {
             this.application = application;
             this.app_view = app_view;
             
             on_activate_button_preferences (window);
-		}
+        }
 
         /**
          * When select the preferences option in the settings icon located in the headerbar, 
@@ -54,5 +54,5 @@ namespace App.Controllers {
                 this.dialog_preferences.show_all ();
             }); 
         }
-	}
+    }
 }

@@ -19,28 +19,28 @@ using App.Configs;
 
 namespace App.Views {
 
-	/**
+    /**
      * The {@code AppView} class.
      *
      * @since 0.1.0
      */
-	public class AppView : Gtk.Grid {
+    public class AppView : Gtk.Grid {
 
         private Gtk.ApplicationWindow app;
         public HeaderBar headerbar;
 
-		/**
+        /**
          * Constructs a new {@code AppView} object.
          */
-		public AppView (Gtk.ApplicationWindow app) {
+        public AppView (Gtk.ApplicationWindow app) {
             this.app = app;
             this.app.set_default_size (700, 600);
             this.app.set_size_request (700, 600);
             this.app.deletable = true;
             this.app.resizable = true;
-			
+            
             this.headerbar = new HeaderBar ();
-			this.app.set_titlebar (this.headerbar);
+            this.app.set_titlebar (this.headerbar);
 
             var welcome = new Granite.Widgets.Welcome (
               Properties.WELCOME,
@@ -48,6 +48,6 @@ namespace App.Views {
             );
 
             this.add (welcome);
-		}
-	}
+        }
+    }
 }
