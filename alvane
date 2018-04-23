@@ -54,10 +54,10 @@ function main()
     
     printf "$Yellow Available commands:$Color_Off $Break"   
     printf "$Yellow  app$Color_Off $Break"
-    #printf "$Green   app:compile$Color_Off         Remove the compiled class file $Break"
-    #printf "$Green   app:clear-compiled$Color_Off  Remove the compiled class file $Break"
-    printf "$Green   app:git-reset$Color_Off       Remove folder .git $Break"
-    #printf "$Green   app:install$Color_Off         Remove the compiled class file $Break"
+    printf "$Green   app:compile$Color_Off         Compiled App $Break"
+    printf "$Green   app:clear-compiled$Color_Off  Removes the build folder $Break"
+    printf "$Green   app:git-recreate$Color_Off    Remove folder .git and run git init $Break"
+    printf "$Green   app:install$Color_Off         Install App $Break"
     #printf "$Green   app:install-run$Color_Off     Remove the compiled class file $Break"
     #printf "$Green   app:namespace$Color_Off       Set the application default namespace $Break"
     #printf "$Green   app:rdnn$Color_Off            Set the default RDNN used by the application $Break"
@@ -86,9 +86,41 @@ function version()
 }
 
 #--------------------------------------------------------------------------
+# 
+#--------------------------------------------------------------------------
+function app_compile() 
+{
+    meson build && cd build && meson configure -Dprefix=/usr && ninja
+}
+
+#--------------------------------------------------------------------------
+# 
+#--------------------------------------------------------------------------
+function app_clear_compiled() 
+{
+    rm -rf build/
+}
+
+#--------------------------------------------------------------------------
+# 
+#--------------------------------------------------------------------------
+function app_install() 
+{
+    cd build && sudo ninja install
+}
+
+#--------------------------------------------------------------------------
 # Delete folde .git and run git init
 #--------------------------------------------------------------------------
-function app_git_reset() 
+function app_git_recreate() 
+{
+    rm -rf .git && git init
+}
+
+#--------------------------------------------------------------------------
+# 
+#--------------------------------------------------------------------------
+function app_rdnn() 
 {
     rm -rf .git && git init
 }
@@ -113,8 +145,8 @@ then
         'app:clear-compiled')
             app_clear_compiled
             ;;
-        'app:git-reset')
-            app_git_reset
+        'app:git-recreate')
+            app_git_recreate
             ;;
         'app:install')
             app_install
