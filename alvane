@@ -54,25 +54,25 @@ function main()
     
     printf "$Yellow Available commands:$Color_Off $Break"   
     printf "$Yellow  app$Color_Off $Break"
-    printf "$Green   app:compile$Color_Off         Remove the compiled class file $Break"
-    printf "$Green   app:clear-compiled$Color_Off  Remove the compiled class file $Break"
+    #printf "$Green   app:compile$Color_Off         Remove the compiled class file $Break"
+    #printf "$Green   app:clear-compiled$Color_Off  Remove the compiled class file $Break"
     printf "$Green   app:git-reset$Color_Off       Remove folder .git $Break"
-    printf "$Green   app:install$Color_Off         Remove the compiled class file $Break"
-    printf "$Green   app:install-run$Color_Off     Remove the compiled class file $Break"
-    printf "$Green   app:namespace$Color_Off       Set the application namespace $Break"
-    printf "$Green   app:rdnn$Color_Off            Set the application namespace $Break"    
-    printf "$Green   app:run$Color_Off             Remove the compiled class file $Break"
+    #printf "$Green   app:install$Color_Off         Remove the compiled class file $Break"
+    #printf "$Green   app:install-run$Color_Off     Remove the compiled class file $Break"
+    #printf "$Green   app:namespace$Color_Off       Set the application default namespace $Break"
+    #printf "$Green   app:rdnn$Color_Off            Set the default RDNN used by the application $Break"
+    #printf "$Green   app:run$Color_Off             Remove the compiled class file $Break"
 
     printf "$Yellow  make$Color_Off $Break"
-    printf "$Green   make:config$Color_Off         Create a cache file for faster configuration loading $Break"
-    printf "$Green   make:controller$Color_Off     Create a new controller class $Break"
-    printf "$Green   make:custom$Color_Off         Create a new widget class $Break"
-    printf "$Green   make:enum$Color_Off           Adds required packages to your composer.json and installs them $Break"
-    printf "$Green   make:model$Color_Off          Adds required packages to your composer.json and installs them $Break"
-    printf "$Green   make:object$Color_Off         Create a new model class $Break"
-    printf "$Green   make:util$Color_Off           Create a new model class $Break"
-    printf "$Green   make:view$Color_Off           Create a new view class $Break"
-    printf "$Green   make:widget$Color_Off         Create a new widget class $Break"
+    #printf "$Green   make:config$Color_Off         Create a cache file for faster configuration loading $Break"
+    #printf "$Green   make:controller$Color_Off     Create a new controller class $Break"
+    #printf "$Green   make:custom$Color_Off         Create a new widget class $Break"
+    #printf "$Green   make:enum$Color_Off           Adds required packages to your composer.json and installs them $Break"
+    #printf "$Green   make:model$Color_Off          Adds required packages to your composer.json and installs them $Break"
+    #printf "$Green   make:object$Color_Off         Create a new model class $Break"
+    #printf "$Green   make:util$Color_Off           Create a new model class $Break"
+    #printf "$Green   make:view$Color_Off           Create a new view class $Break"
+    #printf "$Green   make:widget$Color_Off         Create a new widget class $Break"
     printf "$Break"
 }
 
@@ -83,6 +83,14 @@ function main()
 function version() 
 {
     printf "$Green Alvane$Color_Off Framework$Yellow 0.1.0$Color_Off $Break"
+}
+
+#--------------------------------------------------------------------------
+# Delete folde .git and run git init
+#--------------------------------------------------------------------------
+function app_git_reset() 
+{
+    rm -rf .git && git init
 }
 
 
