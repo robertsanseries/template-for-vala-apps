@@ -7,24 +7,21 @@ foreach i : icon_sizes
     )
 endforeach
 
-install_data(
-    join_paths('images', meson.project_name() + '.svg'),
-    install_dir: join_paths(get_option('datadir'), 'template-for-vala-apps', 'images')
-)
-
-install_data(
-    join_paths('images', meson.project_name() + '.png'),
-    install_dir: join_paths(get_option('datadir'), 'pixmaps')
-)
-
-install_data(
-    meson.project_name() + '.desktop',
-    install_dir: join_paths(get_option('datadir'), 'applications')
-)
-
-install_data(
-    meson.project_name() + '.appdata.xml',
+i18n.merge_file(
+    input: meson.project_name() + '.appdata.xml.in',
+    output: meson.project_name() + '.appdata.xml',
+    po_dir: join_paths(meson.source_root(), 'po'),
+    install: true,
     install_dir: join_paths(get_option('datadir'), 'metainfo')
+)
+
+i18n.merge_file(
+    input: meson.project_name() + '.desktop.in',
+    output: meson.project_name() + '.desktop',
+    po_dir: join_paths(meson.source_root(), 'po'),
+    type: 'desktop',
+    install: true,
+    install_dir: join_paths(get_option('datadir'), 'applications')
 )
 
 install_data(

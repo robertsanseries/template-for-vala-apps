@@ -34,6 +34,15 @@
     Cyan='\033[0;36m'         # Cyan
     White='\033[0;37m'        # White
 
+    Black_bg='\033[0;40m'        # Black
+    Red_bg='\033[0;41m'          # Red
+    Green_bg='\033[0;42m'        # Green
+    Yellow_bg='\033[0;43m'       # Yellow
+    Blue_bg='\033[0;44m'         # Blue
+    Purple_bg='\033[0;45m'       # Purple
+    Cyan_bg='\033[0;46m'         # Cyan
+    White_bg='\033[0;47m'        # White
+
 # Break line
     Break='\n'
 
@@ -55,12 +64,12 @@ function main()
     printf "$Yellow Available commands:$Color_Off $Break"   
     printf "$Yellow  app$Color_Off $Break"
     printf "$Green   app:compile$Color_Off         Compiled App $Break"
-    printf "$Green   app:clear-compiled$Color_Off  Removes the build folder $Break"
+    printf "$Green   app:clear-compiled$Color_Off  Remove the build folder $Break"
     printf "$Green   app:git-recreate$Color_Off    Remove folder .git and run git init $Break"
     printf "$Green   app:install$Color_Off         Install App $Break"
     #printf "$Green   app:install-run$Color_Off     Remove the compiled class file $Break"
     #printf "$Green   app:namespace$Color_Off       Set the application default namespace $Break"
-    #printf "$Green   app:rdnn$Color_Off            Set the default RDNN used by the application $Break"
+    printf "$Green   app:rdnn$Color_Off            Set the default RDNN used by the application $Break"
     #printf "$Green   app:run$Color_Off             Remove the compiled class file $Break"
 
     printf "$Yellow  make$Color_Off $Break"
@@ -122,7 +131,161 @@ function app_git_recreate()
 #--------------------------------------------------------------------------
 function app_rdnn() 
 {
-    rm -rf .git && git init
+    location="data"
+    location_icons="images/icons"
+    location_icons_16="16"
+    location_icons_24="24"
+    location_icons_32="32"
+    location_icons_48="48"
+    location_icons_64="64"
+    location_icons_128="128"
+
+    cd "$location"
+
+    path_appdata=$(find -type f -name '*.appdata.xml.in')
+    if [ -f $path_appdata ]
+    then
+        old_appdata=`basename $path_appdata`
+        new_appdata="$1.appdata.xml.in"
+        if [ "$old_appdata" != "$new_appdata" ];
+        then
+            mv {"$old_appdata","$new_appdata"}
+        fi
+    fi
+
+    path_desktop=$(find -type f -name '*.desktop.in')
+    if [ -f $path_desktop ]
+    then
+        old_desktop=`basename $path_desktop`
+        new_desktop="$1.desktop.in"
+        if [ "$old_desktop" != "$new_desktop" ];
+        then
+            mv {"$old_desktop","$new_desktop"}
+        fi
+    fi
+    
+    path_gresource=$(find -type f -name '*.gresource.xml')
+    if [ -f $path_gresource ]
+    then
+        old_gresource=`basename $path_gresource`
+        new_gresource="$1.gresource.xml"
+        if [ "$old_gresource" != "$new_gresource" ];
+        then
+            mv {"$old_gresource","$new_gresource"}
+        fi
+    fi
+
+    path_gschema=$(find -type f -name '*.gschema.xml')
+    if [ -f $path_gschema ]
+    then
+        old_gschema=`basename $path_gschema`
+        new_gschema="$1.gschema.xml"
+        if [ "$old_gschema" != "$new_gschema" ]; 
+        then
+            mv {"$old_gschema","$new_gschema"}
+        fi
+    fi
+
+    cd "$location_icons"
+    cd "$location_icons_16"
+
+    svg_16=$(find -type f -name '*.svg')
+    if [ -f $svg_16 ]
+    then
+        old_16_svg=`basename $svg_16`
+        new_16_svg="$1.svg"
+
+        if [ "$old_16_svg" != "$new_16_svg" ]; 
+        then
+            mv {"$old_16_svg","$new_16_svg"}
+        fi
+    fi
+
+    cd "../$location_icons_24"
+
+    svg_24=$(find -type f -name '*.svg')
+    if [ -f $svg_24 ]
+    then
+        old_24_svg=`basename $svg_24`
+        new_24_svg="$1.svg"
+
+        if [ "$old_24_svg" != "$new_24_svg" ]; 
+        then
+            mv {"$old_24_svg","$new_24_svg"}
+        fi
+    fi
+
+    cd "../$location_icons_32"
+
+    svg_32=$(find -type f -name '*.svg')
+    if [ -f $svg_32 ]
+    then
+        old_32_svg=`basename $svg_32`
+        new_32_svg="$1.svg"
+
+        if [ "$old_32_svg" != "$new_32_svg" ]; 
+        then
+            mv {"$old_32_svg","$new_32_svg"}
+        fi
+    fi
+
+    cd "../$location_icons_48"
+
+    svg_48=$(find -type f -name '*.svg')
+    if [ -f $svg_48 ]
+    then
+        old_48_svg=`basename $svg_48`
+        new_48_svg="$1.svg"
+
+        if [ "$old_48_svg" != "$new_48_svg" ]; 
+        then
+            mv {"$old_48_svg","$new_48_svg"}
+        fi
+    fi
+
+    cd "../$location_icons_64"
+
+    svg_64=$(find -type f -name '*.svg')
+    if [ -f $svg_64 ]
+    then
+        old_64_svg=`basename $svg_64`
+        new_64_svg="$1.svg"
+
+        if [ "$old_64_svg" != "$new_64_svg" ]; 
+        then
+            mv {"$old_64_svg","$new_64_svg"}
+        fi
+    fi
+
+    cd "../$location_icons_128"
+
+    svg_128=$(find -type f -name '*.svg')
+    if [ -f $svg_128 ]
+    then
+        old_128_svg=`basename $svg_128`
+        new_128_svg="$1.svg"
+        
+        if [ "$old_128_svg" != "$new_128_svg" ]; 
+        then
+            mv {"$old_128_svg","$new_128_svg"}
+        fi
+    fi
+
+    cd "../../../../po"
+
+    po=$(find -type f -name '*.pot')
+    if [ -f $lang ]
+    then
+        old_po=`basename $po`
+        new_po="$1.pot"
+        
+        if [ "$old_po" != "$new_po" ]; 
+        then
+            mv {"$old_po","$new_po"}
+        fi
+    fi
+
+    printf "$Green ✓ RDNN changed $Color_Off $Break"
 }
 
 
@@ -158,32 +321,37 @@ then
             app_namespace
             ;;
         'app:rdnn')
-            app_rdnn
+            if [ "$number_parameters" -gt 1 ] 
+            then
+                app_rdnn "$2"
+            else
+                printf "$Red_bg You forgot to type the new RDNN $Color_Off $Break"
+            fi
             ;;
         'app:run')
             app_run
             ;;
 
         'make:config')
-            make_config  "$parameters"
+            make_config "$parameters"
             ;;
         'make:controller')
-            make_controller  "$parameters"
+            make_controller "$parameters"
             ;;
         'make:custom')
-            make_custom  "$parameters"
+            make_custom "$parameters"
             ;;
         'make:enum')
-            make_enum  "$parameters"
+            make_enum "$parameters"
             ;;
         'make:model')
-            make_model  "$parameters"
+            make_model "$parameters"
             ;;
         'make:object')
-            make_object  "$parameters"
+            make_object "$parameters"
             ;;
         'make:util')
-            make_util  "$parameters"
+            make_util "$parameters"
             ;;
         'make:view')
             make_view  "$parameters"
