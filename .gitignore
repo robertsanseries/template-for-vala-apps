@@ -1,7 +1,7 @@
 build/*
 debian/build/*
-debian/com.github.robertsanseries.template-for-vala-apps.debhelper.log
-debian/com.github.robertsanseries.template-for-vala-apps.substvars
-debian/com.github.robertsanseries.template-for-vala-apps/
+debian/com.github.alvane.debhelper.log
+debian/com.github.alvane.substvars
+debian/com.github.alvane/
 debian/debhelper-build-stamp
 debian/files

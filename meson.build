@@ -1,16 +1,10 @@
-project('com.github.robertsanseries.template-for-vala-apps', ['vala', 'c'],
-    version : '0.1.0',
-    license: 'GPL-3.0'
+project('com.github.alvane', ['vala', 'c'],
+    version : '',
+    license: ''
 )
 
 gnome = import('gnome')
 i18n = import('i18n')
-
-gresource = gnome.compile_resources(
-    'as-resources', 'data/com.github.robertsanseries.template-for-vala-apps.gresource.xml',
-    source_dir: 'data',
-    c_name: 'as'
-)
 
 conf = configuration_data()
 conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
@@ -26,7 +20,7 @@ subdir('data')
 subdir('po')
 subdir('src')
 
-executable('com.github.robertsanseries.template-for-vala-apps',
+executable('com.github.alvane',
     sources,
     gresource,
     c_args: c_args,

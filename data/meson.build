@@ -5,6 +5,11 @@ foreach i : icon_sizes
         join_paths('images', 'icons', i, meson.project_name() + '.svg'),
         install_dir: join_paths(get_option('datadir'), 'icons', 'hicolor', i + 'x' + i, 'apps')
     )
+
+    install_data(
+        join_paths('images', 'icons', i, meson.project_name() + '.svg'),
+        install_dir: join_paths(get_option('datadir'), 'icons', 'hicolor', i + 'x' + i + '@2', 'apps')
+    )
 endforeach
 
 i18n.merge_file(
@@ -24,7 +29,26 @@ i18n.merge_file(
     install_dir: join_paths(get_option('datadir'), 'applications')
 )
 
+gresource = gnome.compile_resources(
+    'as-resources', meson.project_name() + '.gresource.xml',
+    source_dir: 'data',
+    c_name: 'as'
+)
+
 install_data(
     meson.project_name() + '.gschema.xml',
     install_dir: join_paths(get_option('datadir'), 'glib-2.0', 'schemas')
+)
+
+
+test (
+    'Validate desktop file',
+    find_program('desktop-file-validate'),
+    args: join_paths(meson.current_build_dir (), meson.project_name() + '.desktop')
+)
+
+test (
+    'Validate appdata file',
+    find_program('appstreamcli'),
+    args: ['validate', join_paths(meson.current_build_dir (), meson.project_name() + '.appdata.xml')]
 )
