@@ -62,17 +62,21 @@ function main()
     printf "$Break"
     
     printf "$Yellow Available commands:$Color_Off $Break"   
-    printf "$Yellow  app$Color_Off $Break"
-    printf "$Green   app:compile$Color_Off         Compiled App $Break"
-    printf "$Green   app:clear-compiled$Color_Off  Remove the build folder $Break"
-    printf "$Green   app:git-recreate$Color_Off    Remove folder .git and run git init $Break"
-    printf "$Green   app:install$Color_Off         Install App $Break"
-    #printf "$Green   app:install-run$Color_Off     Remove the compiled class file $Break"
-    #printf "$Green   app:namespace$Color_Off       Set the application default namespace $Break"
-    printf "$Green   app:rdnn$Color_Off            Set the default RDNN used by the application $Break"
-    #printf "$Green   app:run$Color_Off             Remove the compiled class file $Break"
+    printf "$Green   compile$Color_Off          Compiled App $Break"
+    printf "$Green   clear-compiled$Color_Off   Remove the build folder $Break"
+    printf "$Green   install$Color_Off          Install App $Break"
+    
+    printf "$Yellow  git$Color_Off $Break"
+    printf "$Green   git:restart$Color_Off      Remove folder .git and run git init $Break"
 
-    printf "$Yellow  make$Color_Off $Break"
+    printf "$Yellow  config$Color_Off $Break"  
+    printf "$Green   config:all$Color_Off       Set the default RDNN used by the application $Break"
+    printf "$Green   config:name$Color_Off      Set the default RDNN used by the application $Break"
+    printf "$Green   config:descricao$Color_Off Set the default RDNN used by the application $Break"
+    printf "$Green   config:rdnn$Color_Off      Set the default RDNN used by the application $Break"
+    printf "$Green   config:license$Color_Off   Set the default RDNN used by the application $Break"
+
+    #printf "$Yellow  make$Color_Off $Break"
     #printf "$Green   make:config$Color_Off         Create a cache file for faster configuration loading $Break"
     #printf "$Green   make:controller$Color_Off     Create a new controller class $Break"
     #printf "$Green   make:custom$Color_Off         Create a new widget class $Break"
@@ -82,7 +86,7 @@ function main()
     #printf "$Green   make:util$Color_Off           Create a new model class $Break"
     #printf "$Green   make:view$Color_Off           Create a new view class $Break"
     #printf "$Green   make:widget$Color_Off         Create a new widget class $Break"
-    printf "$Break"
+    #printf "$Break"
 }
 
 
@@ -97,7 +101,7 @@ function version()
 #--------------------------------------------------------------------------
 # 
 #--------------------------------------------------------------------------
-function app_compile() 
+function compile() 
 {
     meson build && cd build && meson configure -Dprefix=/usr && ninja
 }
@@ -105,7 +109,7 @@ function app_compile()
 #--------------------------------------------------------------------------
 # 
 #--------------------------------------------------------------------------
-function app_clear_compiled() 
+function clear_compiled() 
 {
     rm -rf build/
 }
@@ -113,7 +117,7 @@ function app_clear_compiled()
 #--------------------------------------------------------------------------
 # 
 #--------------------------------------------------------------------------
-function app_install() 
+function install() 
 {
     cd build && sudo ninja install
 }
@@ -121,7 +125,7 @@ function app_install()
 #--------------------------------------------------------------------------
 # Delete folde .git and run git init
 #--------------------------------------------------------------------------
-function app_git_recreate() 
+function git_restart() 
 {
     rm -rf .git && git init
 }
@@ -129,19 +133,25 @@ function app_git_recreate()
 #--------------------------------------------------------------------------
 # 
 #--------------------------------------------------------------------------
-function app_rdnn() 
+function config_rdnn() 
 {
-    location="data"
-    location_icons="images/icons"
-    location_icons_16="16"
-    location_icons_24="24"
-    location_icons_32="32"
-    location_icons_48="48"
-    location_icons_64="64"
-    location_icons_128="128"
+    cd "data"
+    rdnn_change_files_data_folder $1
 
-    cd "$location"
+    cd "images/icons"
+    rdnn_change_files_icons_folder $1
 
+    cd "../../../../po"
+    rdnn_change_files_po_folder $1
+
+    printf "$Green ✓ completed $Color_Off $Break"
+}
+
+#--------------------------------------------------------------------------
+# 
+#--------------------------------------------------------------------------
+function rdnn_change_files_data_folder() 
+{
     path_appdata=$(find -type f -name '*.appdata.xml.in')
     if [ -f $path_appdata ]
     then
@@ -211,9 +221,14 @@ function app_rdnn()
             sed -i  "s/BARRA/\//g" $new_gschema
         fi
     fi
+}
 
-    cd "$location_icons"
-    cd "$location_icons_16"
+#--------------------------------------------------------------------------
+# 
+#--------------------------------------------------------------------------
+function rdnn_change_files_icons_folder() 
+{    
+    cd "16"
 
     svg_16=$(find -type f -name '*.svg')
     if [ -f $svg_16 ]
@@ -233,7 +248,7 @@ function app_rdnn()
         fi
     fi
 
-    cd "../$location_icons_24"
+    cd "../24"
 
     svg_24=$(find -type f -name '*.svg')
     if [ -f $svg_24 ]
@@ -253,7 +268,7 @@ function app_rdnn()
         fi
     fi
 
-    cd "../$location_icons_32"
+    cd "../32"
 
     svg_32=$(find -type f -name '*.svg')
     if [ -f $svg_32 ]
@@ -273,7 +288,7 @@ function app_rdnn()
         fi
     fi
 
-    cd "../$location_icons_48"
+    cd "../48"
 
     svg_48=$(find -type f -name '*.svg')
     if [ -f $svg_48 ]
@@ -293,7 +308,7 @@ function app_rdnn()
         fi
     fi
 
-    cd "../$location_icons_64"
+    cd "../64"
 
     svg_64=$(find -type f -name '*.svg')
     if [ -f $svg_64 ]
@@ -313,7 +328,7 @@ function app_rdnn()
         fi
     fi
 
-    cd "../$location_icons_128"
+    cd "../128"
 
     svg_128=$(find -type f -name '*.svg')
     if [ -f $svg_128 ]
@@ -332,9 +347,13 @@ function app_rdnn()
             sed -i  "s/BARRA/\//g" $new_128_svg
         fi
     fi
+}
 
-    cd "../../../../po"
-
+#--------------------------------------------------------------------------
+# 
+#--------------------------------------------------------------------------
+function rdnn_change_files_po_folder() 
+{
     po=$(find -type f -name '*.pot')
     if [ -f $lang ]
     then
@@ -349,14 +368,7 @@ function app_rdnn()
             sed -i  "s/$name/$1/g" $new_po
         fi
     fi
-
-    #cd "../../../../"
-   #sed -i -e 's/few/asd/g' hello.txt
-   #sed -n 1p
-
-    printf "$Green ✓ RDNN changed $Color_Off $Break"
-}
-
+}   
 
 #--------------------------------------------------------------------------
 # Run The Alvane Application
@@ -371,34 +383,37 @@ parameters=$@
 if [ "$number_parameters" -gt 0 ] 
 then
     case $1 in 
-        'app:compile')
-            app_compile
+        'compile')
+            compile
             ;;
-        'app:clear-compiled')
-            app_clear_compiled
+        'clear-compiled')
+            clear_compiled
             ;;
-        'app:git-recreate')
-            app_git_recreate
-            ;;
-        'app:install')
+        'install')
             app_install
             ;;
-        'app:install-run')
-            app_install_run
+        'git:restart')
+            git_restart
             ;;
-        'app:namespace')
-            app_namespace
+        'config:all')
+            printf "$1"
             ;;
-        'app:rdnn')
+        'config:name')
+            printf "$1"
+            ;;
+        'config:descricao')
+            printf "$1"
+            ;;
+        'config:rdnn')
             if [ "$number_parameters" -gt 1 ] 
             then
-                app_rdnn "$2"
+                config_rdnn "$2"
             else
                 printf "$Red_bg You forgot to type the new RDNN $Color_Off $Break"
             fi
             ;;
-        'app:run')
-            app_run
+        'config:license')
+            printf "$1"
             ;;
 
         'make:config')

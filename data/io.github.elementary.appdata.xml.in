@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
     
-    <id>com.github.alvane.desktop</id>
+    <id>io.github.elementary.desktop</id>
     <metadata_license>CC0-1.0</metadata_license>
     <project_license></project_license>
     
@@ -10,7 +10,7 @@
     <developer_name></developer_name>
     
     <provides>
-        <binary>com.github.alvane</binary>
+        <binary>io.github.elementary</binary>
     </provides>
     
     <screenshots>
