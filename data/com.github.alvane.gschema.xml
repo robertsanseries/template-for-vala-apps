@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-
-	<schema id="com.github.robertsanseries.template-for-vala-apps" path="/com/github/robertsanseries/template-for-vala-apps/">
+	<schema id="com.github.alvane" path="/com/github/alvane/">
+		
 		<key name="window-x" type="i">
 			<default>-1</default>
-			<summary>Most recent x position of Ciano</summary>
-			<description>Most recent x position of Ciano</description>
-		</key>
-	
+			<summary>Most recent x position</summary>
+			<description>Most recent x position</description>
+		</key>	
+		
 		<key name="window-y" type="i">
 			<default>-1</default>
-			<summary>Most recent y position of Ciano</summary>
-			<description>Most recent y position of Ciano</description>
+			<summary>Most recent y position</summary>
+			<description>Most recent y position</description>
 		</key>
+		
 	</schema>
-
 </schemalist>

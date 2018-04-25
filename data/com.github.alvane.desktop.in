@@ -1,10 +1,10 @@
 [Desktop Entry]
-Name=App Template
-Comment=Template for vala apps
-Icon=com.github.robertsanseries.template-for-vala-apps
-Exec=com.github.robertsanseries.template-for-vala-apps
+Name=App
+Comment=App
+Icon=com.github.alvane
+Exec=com.github.alvane
 Terminal=false
 Type=Application
 StartupNotify=true
-Categories=GNOME;GTK;IDE;Utility;TextEditor;WebDevelopment;
-Keywords=app;template;vala;
+Categories=GNOME;GTK;
+Keywords=app;vala;

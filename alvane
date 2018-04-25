@@ -150,6 +150,14 @@ function app_rdnn()
         if [ "$old_appdata" != "$new_appdata" ];
         then
             mv {"$old_appdata","$new_appdata"}
+            
+            sed -i  "s/\//BARRA/g" $new_appdata
+
+            name=${old_appdata%.*}
+            name=${name%.*}
+            name=${name%.*}
+            sed -i -e "s/$name/$1/g" $new_appdata
+            sed -i  "s/BARRA/\//g" $new_appdata
         fi
     fi
 
@@ -161,6 +169,10 @@ function app_rdnn()
         if [ "$old_desktop" != "$new_desktop" ];
         then
             mv {"$old_desktop","$new_desktop"}
+
+            name=${old_desktop%.*}
+            name=${name%.*}
+            sed -i -e "s/$name/$1/g" $new_desktop
         fi
     fi
     
@@ -172,6 +184,13 @@ function app_rdnn()
         if [ "$old_gresource" != "$new_gresource" ];
         then
             mv {"$old_gresource","$new_gresource"}
+
+            sed -i  "s/\//BARRA/g" $new_gresource
+
+            name=${old_gresource%.*}
+            name=${name%.*}
+            sed -i  "s/$name/$1/g" $new_gresource
+            sed -i  "s/BARRA/\//g" $new_gresource
         fi
     fi
 
@@ -183,6 +202,13 @@ function app_rdnn()
         if [ "$old_gschema" != "$new_gschema" ]; 
         then
             mv {"$old_gschema","$new_gschema"}
+
+            sed -i  "s/\//BARRA/g" $new_gschema
+
+            name=${old_gschema%.*}
+            name=${name%.*}
+            sed -i  "s/$name/$1/g" $new_gschema
+            sed -i  "s/BARRA/\//g" $new_gschema
         fi
     fi
 
@@ -198,6 +224,12 @@ function app_rdnn()
         if [ "$old_16_svg" != "$new_16_svg" ]; 
         then
             mv {"$old_16_svg","$new_16_svg"}
+
+            sed -i  "s/\//BARRA/g" $new_16_svg
+
+            name=${old_16_svg%.*}
+            sed -i  "s/$name/$1/g" $new_16_svg
+            sed -i  "s/BARRA/\//g" $new_16_svg
         fi
     fi
 
@@ -212,6 +244,12 @@ function app_rdnn()
         if [ "$old_24_svg" != "$new_24_svg" ]; 
         then
             mv {"$old_24_svg","$new_24_svg"}
+
+            sed -i  "s/\//BARRA/g" $new_24_svg
+
+            name=${old_24_svg%.*}
+            sed -i  "s/$name/$1/g" $new_24_svg
+            sed -i  "s/BARRA/\//g" $new_24_svg
         fi
     fi
 
@@ -226,6 +264,12 @@ function app_rdnn()
         if [ "$old_32_svg" != "$new_32_svg" ]; 
         then
             mv {"$old_32_svg","$new_32_svg"}
+
+            sed -i  "s/\//BARRA/g" $new_32_svg
+
+            name=${old_32_svg%.*}
+            sed -i  "s/$name/$1/g" $new_32_svg
+            sed -i  "s/BARRA/\//g" $new_32_svg
         fi
     fi
 
@@ -240,6 +284,12 @@ function app_rdnn()
         if [ "$old_48_svg" != "$new_48_svg" ]; 
         then
             mv {"$old_48_svg","$new_48_svg"}
+
+            sed -i  "s/\//BARRA/g" $new_48_svg
+
+            name=${old_48_svg%.*}
+            sed -i  "s/$name/$1/g" $new_48_svg
+            sed -i  "s/BARRA/\//g" $new_48_svg
         fi
     fi
 
@@ -254,6 +304,12 @@ function app_rdnn()
         if [ "$old_64_svg" != "$new_64_svg" ]; 
         then
             mv {"$old_64_svg","$new_64_svg"}
+
+            sed -i  "s/\//BARRA/g" $new_64_svg
+
+            name=${old_64_svg%.*}
+            sed -i  "s/$name/$1/g" $new_64_svg
+            sed -i  "s/BARRA/\//g" $new_64_svg
         fi
     fi
 
@@ -268,6 +324,12 @@ function app_rdnn()
         if [ "$old_128_svg" != "$new_128_svg" ]; 
         then
             mv {"$old_128_svg","$new_128_svg"}
+
+            sed -i  "s/\//BARRA/g" $new_128_svg
+
+            name=${old_128_svg%.*}
+            sed -i  "s/$name/$1/g" $new_128_svg
+            sed -i  "s/BARRA/\//g" $new_128_svg
         fi
     fi
 
@@ -282,8 +344,15 @@ function app_rdnn()
         if [ "$old_po" != "$new_po" ]; 
         then
             mv {"$old_po","$new_po"}
+
+            name=${old_po%.*}
+            sed -i  "s/$name/$1/g" $new_po
         fi
     fi
+
+    #cd "../../../../"
+   #sed -i -e 's/few/asd/g' hello.txt
+   #sed -n 1p
 
     printf "$Green ✓ RDNN changed $Color_Off $Break"
 }
