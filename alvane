@@ -70,11 +70,11 @@ function main()
     printf "$Green   git:restart$Color_Off      Remove folder .git and run git init $Break"
 
     printf "$Yellow  config$Color_Off $Break"  
-    printf "$Green   config:all$Color_Off       Set the default RDNN used by the application $Break"
-    printf "$Green   config:name$Color_Off      Set the default RDNN used by the application $Break"
-    printf "$Green   config:descricao$Color_Off Set the default RDNN used by the application $Break"
+    #printf "$Green   config:all$Color_Off       Set the default RDNN used by the application $Break"
+    #printf "$Green   config:name$Color_Off      Set the default RDNN used by the application $Break"
+    #printf "$Green   config:descricao$Color_Off Set the default RDNN used by the application $Break"
     printf "$Green   config:rdnn$Color_Off      Set the default RDNN used by the application $Break"
-    printf "$Green   config:license$Color_Off   Set the default RDNN used by the application $Break"
+    #printf "$Green   config:license$Color_Off   Set the default RDNN used by the application $Break"
 
     #printf "$Yellow  make$Color_Off $Break"
     #printf "$Green   make:config$Color_Off         Create a cache file for faster configuration loading $Break"
@@ -133,16 +133,67 @@ function git_restart()
 #--------------------------------------------------------------------------
 # 
 #--------------------------------------------------------------------------
+function config_all() 
+{
+    printf "config_all"
+    #name
+    #summary
+    #developer_name
+    #description
+    #email 
+    #version
+    #rdnn
+    #license
+}
+
+
+#--------------------------------------------------------------------------
+# 
+#--------------------------------------------------------------------------
+function config_name() 
+{
+    printf "oi"
+}
+
+#--------------------------------------------------------------------------
+# 
+#--------------------------------------------------------------------------
 function config_rdnn() 
 {
-    cd "data"
-    rdnn_change_files_data_folder $1
+    file="meson.build"
+    if [ -f $file ]
+    then
+        old_rdnn=`sed -n 1p $file | cut -f2 -d "'" | cut -f1 -d "'"`
+        sed -i -e "s/$old_rdnn/$1/g" $file
+    fi
 
-    cd "images/icons"
-    rdnn_change_files_icons_folder $1
+    if [ -d "data" ];
+    then
+        cd "data"
+        rdnn_change_files_data_folder $1
 
-    cd "../../../../po"
-    rdnn_change_files_po_folder $1
+        if [ -d "images/icons" ];
+        then
+            cd "images/icons"
+            rdnn_change_files_icons_folder $1
+            cd "../../../../"
+        else
+            cd ".."
+        fi
+    fi
+
+    if [ -d "debian" ];
+    then
+        cd "debian"
+        rdnn_change_files_debian_folder $1 $old_rdnn
+        cd ".."
+    fi
+
+    if [ -d "po" ];
+    then
+        cd "po"
+        rdnn_change_files_po_folder $1
+    fi
 
     printf "$Green ✓ completed $Color_Off $Break"
 }
@@ -221,6 +272,19 @@ function rdnn_change_files_data_folder()
             sed -i  "s/BARRA/\//g" $new_gschema
         fi
     fi
+}
+
+#--------------------------------------------------------------------------
+# 
+#--------------------------------------------------------------------------
+function rdnn_change_files_debian_folder() 
+{
+    new_rdnn=$1
+    old_rdnn=$2
+
+    sed -i -e "s/$old_rdnn/$new_rdnn/g" "changelog"
+    sed -i -e "s/$old_rdnn/$new_rdnn/g" "control"
+    sed -i -e "s/$old_rdnn/$new_rdnn/g" "rules"
 }
 
 #--------------------------------------------------------------------------
@@ -396,10 +460,10 @@ then
             git_restart
             ;;
         'config:all')
-            printf "$1"
+            config_all
             ;;
         'config:name')
-            printf "$1"
+            config_name "$2"
             ;;
         'config:descricao')
             printf "$1"
