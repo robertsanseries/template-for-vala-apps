@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=App
 Comment=App
-Icon=io.github.elementary
-Exec=io.github.elementary
+Icon=io.github.alvane
+Exec=io.github.alvane
 Terminal=false
 Type=Application
 StartupNotify=true

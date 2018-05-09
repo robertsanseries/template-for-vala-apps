@@ -1,4 +1,4 @@
-Source: com.github.alvane
+Source: oi.github.alvane
 Section: x11
 Priority: extra
 Maintainer: Name <email@email.com>
@@ -9,7 +9,7 @@ Build-Depends: meson (>= 0.40),
                libgtk-3-dev
 Standards-Version: 3.9.3
 
-Package: com.github.alvane
+Package: oi.github.alvane
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: App vala

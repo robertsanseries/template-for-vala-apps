@@ -1,6 +1,6 @@
-project('com.github.alvane', ['vala', 'c'],
-    version : '',
-    license: ''
+project('io.github.alvane', ['vala', 'c'],
+    version:'',
+    license:''
 )
 
 gnome = import('gnome')
@@ -20,7 +20,7 @@ subdir('data')
 subdir('po')
 subdir('src')
 
-executable('com.github.alvane',
+executable('io.github.alvane',
     sources,
     gresource,
     c_args: c_args,
