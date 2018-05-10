@@ -71,7 +71,7 @@ function main()
 
     printf "$Yellow  config$Color_Off $Break"  
     #printf "$Green   config:all$Color_Off       Set the default RDNN used by the application $Break"
-    #printf "$Green   config:name$Color_Off      Set the default RDNN used by the application $Break"
+    printf "$Green   config:name-app$Color_Off  Set the application name $Break"
     #printf "$Green   config:descricao$Color_Off Set the default RDNN used by the application $Break"
     printf "$Green   config:rdnn$Color_Off      Set the default RDNN used by the application $Break"
     #printf "$Green   config:license$Color_Off   Set the default RDNN used by the application $Break"
@@ -150,9 +150,46 @@ function config_all()
 #--------------------------------------------------------------------------
 # 
 #--------------------------------------------------------------------------
-function config_name() 
+function config_name_app() 
 {
-    printf "oi"
+    cd "data"
+    path_appdata=$(find -type f -name '*.appdata.xml.in')
+    if [ -f $path_appdata ]
+    then
+        name_file_appdata=`basename $path_appdata`
+        old_name=$(awk -F '[<>]' '/name/{print $3}' $name_file_appdata)
+
+        if [ -z $old_name ]; then
+            tag_name="<name><\/name>"
+            new_tag_name="<name>$1<\/name>"
+            sed -i -e "s/$tag_name/$new_tag_name/g" $name_file_appdata            
+        else
+            sed -i -e "s/$old_name/$1/g" $name_file_appdata
+        fi        
+    fi
+
+    path_desktop=$(find -type f -name '*.desktop.in')
+    if [ -f $path_desktop ]
+    then
+        name_file_desktop=`basename $path_desktop`
+        sed -i -e "s/Name=.*/Name=$1/g" $name_file_desktop
+    fi
+
+    cd "../debian"
+    name_file_copyright="copyright"
+    sed -i -e "s/Upstream-Name:.*/Upstream-Name: $1/g" $name_file_copyright
+
+    cd ".."
+
+    printf "$Cyan ✓ Configured application name $Color_Off $Break"
+}
+
+#--------------------------------------------------------------------------
+# 
+#--------------------------------------------------------------------------
+function config_name_author() 
+{
+    printf "config_name_author"
 }
 
 #--------------------------------------------------------------------------
@@ -195,7 +232,7 @@ function config_rdnn()
         rdnn_change_files_po_folder $1
     fi
 
-    printf "$Green ✓ completed $Color_Off $Break"
+    printf "$Cyan ✓ Configured application RDNN $Color_Off $Break"
 }
 
 #--------------------------------------------------------------------------
@@ -462,8 +499,8 @@ then
         'config:all')
             config_all
             ;;
-        'config:name')
-            config_name "$2"
+        'config:name-app')
+            config_name_app "$2"
             ;;
         'config:descricao')
             printf "$1"
