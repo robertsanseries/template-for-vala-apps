@@ -27,9 +27,11 @@ namespace App.Configs {
      */
     public class Properties {
         
-        public abstract const string TITLE_HEADER_BAR = "App Template";
-        public abstract const string CLOSE = "Close";
-        public abstract const string WELCOME = "Welcome";
-        public abstract const string THIS_APP_JUST_TEMPLATE = "This app is just a template";
+        public abstract const string TITLE_HEADER_BAR = _("App Template");
+        public abstract const string CLOSE = _("Close");
+        public abstract const string WELCOME = _("Welcome");
+        public abstract const string THIS_APP_JUST_TEMPLATE = _("This app is just a template");
+        public abstract const string PREFERENCES = _("Preferences");
+        public abstract const string SETTINGS = _("Settings");
     }
 }

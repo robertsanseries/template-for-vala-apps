@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: com.github.robertsanseries.template-for-vala-apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-09-14 22:30-0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2018-10-18 12:13-0000\n"
 "Last-Translator:  FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -31,4 +31,12 @@ msgstr ""
 
 #: src/configs/Properties.vala:33
 msgid "This app is just a template"
+msgstr ""
+
+#: src/configs/Properties.vala:34
+msgid "Preferences"
+msgstr ""
+
+#: src/configs/Properties.vala:35
+msgid "Settings"
 msgstr ""
